@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBarb.Plugins", "ProjectBarb.Plugins.csproj", "{F1D4E689-A9C4-4933-43EC-58EE5EE86752}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBarb", "ProjectBarb.csproj", "{EC36FBA9-FB9A-C603-E081-D66FDF89BDCF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBarb.Editor", "ProjectBarb.Editor.csproj", "{CF211980-FEC7-F604-16DC-2A5E3E3BA8A1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F1D4E689-A9C4-4933-43EC-58EE5EE86752}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1D4E689-A9C4-4933-43EC-58EE5EE86752}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1D4E689-A9C4-4933-43EC-58EE5EE86752}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1D4E689-A9C4-4933-43EC-58EE5EE86752}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC36FBA9-FB9A-C603-E081-D66FDF89BDCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC36FBA9-FB9A-C603-E081-D66FDF89BDCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC36FBA9-FB9A-C603-E081-D66FDF89BDCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC36FBA9-FB9A-C603-E081-D66FDF89BDCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF211980-FEC7-F604-16DC-2A5E3E3BA8A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF211980-FEC7-F604-16DC-2A5E3E3BA8A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF211980-FEC7-F604-16DC-2A5E3E3BA8A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF211980-FEC7-F604-16DC-2A5E3E3BA8A1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
