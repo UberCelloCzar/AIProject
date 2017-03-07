@@ -1,11 +1,10 @@
 fileFormatVersion: 2
-guid: cc75559be6d35574a9ba9fffa88e86c5
-timeCreated: 1488911850
+guid: 5eb3954c970c1344a97facdd41a815b0
+timeCreated: 1488916452
 licenseType: Pro
 MonoImporter:
   serializedVersion: 2
-  defaultReferences:
-  - vertex: {fileID: 1351282549314794, guid: d9e429d870a0bf540af9e869de123d75, type: 2}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
