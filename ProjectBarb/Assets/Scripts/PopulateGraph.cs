@@ -6,24 +6,25 @@ public class PopulateGraph : MonoBehaviour {
 
 	public GameObject vertex;
 
-	public int size = 95;
+	public GameObject[,] adjMat = new GameObject [100,100];
 
-	public GameObject[,] adjMat = new GameObject [90,90];
+	public bool waypointRender;
 
 	// Use this for initialization
 	void Start () {
 		Vector3 newPos = new Vector3();
-		newPos.x = 25;
+		newPos.x = 0;
 		newPos.y = 50;
 		newPos.z = 0;
-		for(int i = 0; i < 90; i++) 
+		for(int i = 0; i < 100; i++) 
 		{
-			newPos.z = 25;
-			for(int j = 0; j < 90; j++) 
+			newPos.z = 0;
+			for(int j = 0; j < 100; j++) 
 			{
 				//newPos.y = Terrain.activeTerrain.terrainData.GetInterpolatedHeight(newPos.x, newPos.z);
 				newPos.y = Terrain.activeTerrain.SampleHeight(newPos);
 				GameObject newVertex = (GameObject)Instantiate( vertex, newPos, this.gameObject.transform.rotation);
+				//newVertex.GetComponent<MeshRenderer>().enabled = false;
 
 				//store waypoints in 2d array
 				adjMat[i,j] = newVertex;
@@ -39,6 +40,19 @@ public class PopulateGraph : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (Input.GetKeyDown(KeyCode.Z))
+		{
+			//reset waypoint colors
+			for (int i = 0; i < 100; i++)
+			{
+				for (int j = 0; j < 100; j++)
+				{
+					GameObject waypoint = adjMat[i, j];
+					waypoint.GetComponent<MeshRenderer>().enabled = !waypointRender;
+				}
+			}
+			waypointRender = !waypointRender;
+
+		}
 	}
 }
