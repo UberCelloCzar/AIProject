@@ -7,6 +7,9 @@ TagManager:
   - ScriptStarter
   - Forest
   - Impassable
+  - Pinky
+  - Flocker
+  - Centroid
   layers:
   - Default
   - TransparentFX

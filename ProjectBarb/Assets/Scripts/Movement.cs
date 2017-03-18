@@ -20,8 +20,14 @@ public class Movement : MonoBehaviour {
 	public float maxSpeed;
 	public float maxForce;
 	public bool hasArrived;
+    private Vector3 followPoint; // Point behind the leader that flockers follow
+    public Vector3 FollowPoint
+    {
+        get { return followPoint; }
+    }
+    public float followDist; // Distance behind the leader the point is at
 
-	GameObject tempPlayer;
+    GameObject tempPlayer;
 
 	CharacterController charControl;
 
@@ -79,7 +85,8 @@ public class Movement : MonoBehaviour {
 
 			this.transform.position = temp;
 		}
-	}
+        followPoint = (followDist * Vector3.Normalize(-velocity)) + transform.position; // Get the point behind the leader for the flockers to follow
+    }
 
 	Vector3 Seek(){
 		desired = (target - this.transform.position);

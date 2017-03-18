@@ -88,7 +88,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Character.cs" />
+    <Compile Include="Assets\Scripts\FindWeight.cs" />
+    <Compile Include="Assets\Scripts\Flocker.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Heap.cs" />
     <Compile Include="Assets\Scripts\InputManager.cs" />
+    <Compile Include="Assets\Scripts\Movement.cs" />
+    <Compile Include="Assets\Scripts\PopulateGraph.cs" />
+    <Compile Include="Assets\Scripts\Vehicle.cs" />
+    <Compile Include="Assets\Scripts\aStar.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
