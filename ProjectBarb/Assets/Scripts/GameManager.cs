@@ -37,6 +37,76 @@ public class GameManager : MonoBehaviour
 
 	void Update() // Update the scene variables, called once per frame
     {
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            foreach (GameObject flocker in flock)
+            {
+                flocker.GetComponent<Flocker>().followWeight--;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            foreach (GameObject flocker in flock)
+            {
+                flocker.GetComponent<Flocker>().followWeight++;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            foreach (GameObject flocker in flock)
+            {
+                flocker.GetComponent<Flocker>().alignWeight--;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            foreach (GameObject flocker in flock)
+            {
+                flocker.GetComponent<Flocker>().alignWeight++;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            foreach (GameObject flocker in flock)
+            {
+                flocker.GetComponent<Flocker>().cohereWeight--;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            foreach (GameObject flocker in flock)
+            {
+                flocker.GetComponent<Flocker>().cohereWeight++;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            foreach (GameObject flocker in flock)
+            {
+                flocker.GetComponent<Flocker>().separateWeight--;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            foreach (GameObject flocker in flock)
+            {
+                flocker.GetComponent<Flocker>().separateWeight++;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            foreach (GameObject flocker in flock)
+            {
+                flocker.GetComponent<Flocker>().avoidWeight--;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            foreach (GameObject flocker in flock)
+            {
+                flocker.GetComponent<Flocker>().avoidWeight++;
+            }
+        }
         for (int i = 0; i < flock.Length; i++) // Update the flocking variables
         {
             centroid.transform.forward += flock[i].transform.forward; // Add all the Daleks' directions and positions,

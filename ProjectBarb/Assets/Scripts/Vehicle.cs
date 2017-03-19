@@ -19,8 +19,13 @@ abstract public class Vehicle : MonoBehaviour
     protected Vector3 desired;
     protected Vector3 steer;
     private Vector3 vecToCenter; // Vector for distance in obstacle avoidance calculation
-
-    protected Vector3 temp;
+    
+    private Rigidbody rigidB; // This body
+    RaycastHit hitInfo; // Stores info on which object is hit
+    bool rayHit; // Is it in front of a trigger?
+    Ray ray; // Ray to be cast
+    int layerMask = 1 << 8; // Bit shift to only cast against layer 8
+    Vector3[] sightlines; // Ray directions in front of vehicle
 
     public float maxSpeed; // Limiting variables, should be initialized in each vehicle child
     public float maxForce;
@@ -37,25 +42,22 @@ abstract public class Vehicle : MonoBehaviour
         acceleration = Vector3.zero; // No initial movement
         velocity = transform.forward;
         gm = GameObject.Find("ScriptStarter").GetComponent<GameManager>(); // Get access to the GameManager script
+        rigidB = this.gameObject.GetComponent<Rigidbody>();
     }
 
 	protected void Update() // Update movement variables based on forces, called once per frame
     {
         CalcSteeringForces(); // Get the overall acceleration needed to do what the vehicle wants
 
-        velocity += acceleration * Time.deltaTime; // Apply the acceleration to the velocity, correcting for frame rate
-        velocity = Vector3.ClampMagnitude(velocity, maxSpeed); // Limit the velocity
+        rigidB.velocity += acceleration * Time.deltaTime; // Apply the acceleration to the velocity, correcting for frame rate
+        rigidB.velocity = Vector3.ClampMagnitude(rigidB.velocity, maxSpeed); // Limit the velocity
+        velocity = rigidB.velocity;
 
         if(autoRotate && velocity != Vector3.zero) // This rotates the vehicle to face its new direction (if the vehicle should do this)
         {
-            transform.forward = velocity.normalized;
+            transform.forward = new Vector3(velocity.normalized.x, 0, velocity.normalized.y);
         }
-
-        temp = this.transform.position;
-        temp += velocity;
-        temp.y = this.transform.position.y;
-
-        this.transform.position = temp;
+        
         acceleration = Vector3.zero; // Reset acceleration when done for the frame
 	}
 
@@ -72,5 +74,26 @@ abstract public class Vehicle : MonoBehaviour
         desired = desired * maxSpeed; // Scale the vector to maxSpeed
         steer = desired - velocity; // Take the desired velocity we just calculated and subtract the current velocity
         return steer; // Return this calculated steering force
+    }
+    protected Vector3 AvoidObstacle() // Takes an obstacle and determines what force is needed to avoid it
+    {
+        sightlines = new Vector3[] {rigidB.velocity, Quaternion.AngleAxis(45, Vector3.up) * rigidB.velocity, Quaternion.AngleAxis(-45, Vector3.up) * rigidB.velocity};
+        desired = Vector3.zero; // Reset desired velocity
+
+        foreach (Vector3 line in sightlines)
+        {
+            ray = new Ray(transform.position, transform.forward); // Get position and direction of the camera
+            rayHit = Physics.Raycast(ray, out hitInfo, 30, layerMask, QueryTriggerInteraction.Ignore); // Raycast against layer 8, 5 spaces in front of camera
+
+            if (rayHit)
+            {
+                desired -= hitInfo.point - transform.position; // Avoid the obstacle
+            }
+        }
+       
+        Debug.DrawLine(transform.position, transform.position + (transform.forward*5), Color.blue);
+
+        
+        return desired; // Return the acceleration
     }
 }

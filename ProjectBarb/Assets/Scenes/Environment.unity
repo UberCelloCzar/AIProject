@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 10920593}
   - component: {fileID: 10920592}
   - component: {fileID: 10920597}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (14)
   m_TagString: Impassable
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 26020815}
   - component: {fileID: 26020814}
   - component: {fileID: 26020819}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (23)
   m_TagString: Impassable
   m_Icon: {fileID: 0}
@@ -323,7 +323,7 @@ GameObject:
   - component: {fileID: 55152690}
   - component: {fileID: 55152689}
   - component: {fileID: 55152693}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -452,7 +452,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 166439459}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ImpassableObjects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -530,7 +530,7 @@ GameObject:
   - component: {fileID: 203504516}
   - component: {fileID: 203504515}
   - component: {fileID: 203504520}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (9)
   m_TagString: Impassable
   m_Icon: {fileID: 0}
@@ -644,7 +644,7 @@ GameObject:
   - component: {fileID: 386163091}
   - component: {fileID: 386163090}
   - component: {fileID: 386163095}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (17)
   m_TagString: Impassable
   m_Icon: {fileID: 0}
@@ -754,7 +754,7 @@ GameObject:
   - component: {fileID: 455620729}
   - component: {fileID: 455620728}
   - component: {fileID: 455620733}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (7)
   m_TagString: Impassable
   m_Icon: {fileID: 0}
@@ -997,6 +997,14 @@ Prefab:
       propertyPath: m_TagString
       value: Impassable
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 83e9939679b3bd34b8880328d429f910, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 83e9939679b3bd34b8880328d429f910, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83e9939679b3bd34b8880328d429f910, type: 3}
   m_IsPrefabParent: 0
@@ -1069,7 +1077,7 @@ GameObject:
   - component: {fileID: 681204523}
   - component: {fileID: 681204522}
   - component: {fileID: 681204527}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (4)
   m_TagString: Impassable
   m_Icon: {fileID: 0}
@@ -1179,7 +1187,7 @@ GameObject:
   - component: {fileID: 734190937}
   - component: {fileID: 734190936}
   - component: {fileID: 734190941}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (15)
   m_TagString: Impassable
   m_Icon: {fileID: 0}
@@ -1370,7 +1378,7 @@ GameObject:
   - component: {fileID: 750556703}
   - component: {fileID: 750556702}
   - component: {fileID: 750556707}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (19)
   m_TagString: Impassable
   m_Icon: {fileID: 0}
@@ -1546,6 +1554,30 @@ Prefab:
       propertyPath: m_TagString
       value: Impassable
       objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: d20c84ece86cd4e44bfcf2c0ba181e60, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d20c84ece86cd4e44bfcf2c0ba181e60, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: d20c84ece86cd4e44bfcf2c0ba181e60, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: d20c84ece86cd4e44bfcf2c0ba181e60, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: d20c84ece86cd4e44bfcf2c0ba181e60, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: d20c84ece86cd4e44bfcf2c0ba181e60, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d20c84ece86cd4e44bfcf2c0ba181e60, type: 3}
   m_IsPrefabParent: 0
@@ -1646,59 +1678,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 759163913}
-  m_LocalRotation: {x: 0.07132368, y: 0.8339006, z: 0.110981554, w: -0.5359159}
-  m_LocalPosition: {x: 214.33084, y: -4.488495, z: 267.46426}
+  m_LocalRotation: {x: -0.32522038, y: 0.5596907, z: 0.25317377, w: 0.71894443}
+  m_LocalPosition: {x: 65.73195, y: -129.60846, z: 192.83838}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &765741331
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4030536260916242, guid: 102474a904ff4a34a981876880a27c4f, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 144.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4030536260916242, guid: 102474a904ff4a34a981876880a27c4f, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 56.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4030536260916242, guid: 102474a904ff4a34a981876880a27c4f, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 256.436
-      objectReference: {fileID: 0}
-    - target: {fileID: 4030536260916242, guid: 102474a904ff4a34a981876880a27c4f, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4030536260916242, guid: 102474a904ff4a34a981876880a27c4f, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4030536260916242, guid: 102474a904ff4a34a981876880a27c4f, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4030536260916242, guid: 102474a904ff4a34a981876880a27c4f, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4030536260916242, guid: 102474a904ff4a34a981876880a27c4f, type: 2}
-      propertyPath: m_RootOrder
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 1416292345113888, guid: 102474a904ff4a34a981876880a27c4f, type: 2}
-      propertyPath: m_Name
-      value: Flocker (5)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 102474a904ff4a34a981876880a27c4f, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &776573398
 Prefab:
   m_ObjectHideFlags: 0
@@ -1754,6 +1740,30 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.08536938
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: b544816461f324e56a39767fdeb5b114, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: b544816461f324e56a39767fdeb5b114, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: b544816461f324e56a39767fdeb5b114, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100014, guid: b544816461f324e56a39767fdeb5b114, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: b544816461f324e56a39767fdeb5b114, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: b544816461f324e56a39767fdeb5b114, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b544816461f324e56a39767fdeb5b114, type: 2}
   m_IsPrefabParent: 0
@@ -1770,7 +1780,7 @@ GameObject:
   - component: {fileID: 857935239}
   - component: {fileID: 857935238}
   - component: {fileID: 857935243}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (18)
   m_TagString: Impassable
   m_Icon: {fileID: 0}
@@ -1880,7 +1890,7 @@ GameObject:
   - component: {fileID: 874140645}
   - component: {fileID: 874140644}
   - component: {fileID: 874140649}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (13)
   m_TagString: Impassable
   m_Icon: {fileID: 0}
@@ -2169,7 +2179,7 @@ GameObject:
   - component: {fileID: 993298051}
   - component: {fileID: 993298050}
   - component: {fileID: 993298055}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (22)
   m_TagString: Impassable
   m_Icon: {fileID: 0}
@@ -2274,7 +2284,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1096849802}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BarbedWire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2436,7 +2446,7 @@ GameObject:
   - component: {fileID: 1166421509}
   - component: {fileID: 1166421508}
   - component: {fileID: 1166421513}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (20)
   m_TagString: Impassable
   m_Icon: {fileID: 0}
@@ -2627,7 +2637,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4030536260916242, guid: 102474a904ff4a34a981876880a27c4f, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 56.6
+      value: 55.66
       objectReference: {fileID: 0}
     - target: {fileID: 4030536260916242, guid: 102474a904ff4a34a981876880a27c4f, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2656,6 +2666,21 @@ Prefab:
     - target: {fileID: 1416292345113888, guid: 102474a904ff4a34a981876880a27c4f, type: 2}
       propertyPath: m_Name
       value: Flocker (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114631103635391806, guid: 102474a904ff4a34a981876880a27c4f,
+        type: 2}
+      propertyPath: separateWeight
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114631103635391806, guid: 102474a904ff4a34a981876880a27c4f,
+        type: 2}
+      propertyPath: cohereWeight
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 54759086316495926, guid: 102474a904ff4a34a981876880a27c4f,
+        type: 2}
+      propertyPath: m_Mass
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 102474a904ff4a34a981876880a27c4f, type: 2}
@@ -2887,7 +2912,7 @@ GameObject:
   - component: {fileID: 1569661339}
   - component: {fileID: 1569661338}
   - component: {fileID: 1569661343}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (21)
   m_TagString: Impassable
   m_Icon: {fileID: 0}
@@ -2997,7 +3022,7 @@ GameObject:
   - component: {fileID: 1598393313}
   - component: {fileID: 1598393312}
   - component: {fileID: 1598393317}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (11)
   m_TagString: Impassable
   m_Icon: {fileID: 0}
@@ -3150,8 +3175,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1650813509}
-  m_LocalRotation: {x: 0.07132368, y: 0.8339006, z: 0.110981554, w: -0.5359159}
-  m_LocalPosition: {x: 214.33084, y: -4.488495, z: 267.46426}
+  m_LocalRotation: {x: 0.17649098, y: 0.8224564, z: 0.35874644, w: -0.40462014}
+  m_LocalPosition: {x: 248.6359, y: -91.19237, z: 295.4751}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3205,7 +3230,7 @@ GameObject:
   - component: {fileID: 1657854649}
   - component: {fileID: 1657854648}
   - component: {fileID: 1657854653}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (12)
   m_TagString: Impassable
   m_Icon: {fileID: 0}
@@ -3315,7 +3340,7 @@ GameObject:
   - component: {fileID: 1663830269}
   - component: {fileID: 1663830268}
   - component: {fileID: 1663830273}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (5)
   m_TagString: Impassable
   m_Icon: {fileID: 0}
@@ -3425,7 +3450,7 @@ GameObject:
   - component: {fileID: 1669772102}
   - component: {fileID: 1669772101}
   - component: {fileID: 1669772106}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (16)
   m_TagString: Impassable
   m_Icon: {fileID: 0}
@@ -3522,52 +3547,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!1001 &1689462078
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4030536260916242, guid: 102474a904ff4a34a981876880a27c4f, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 166
-      objectReference: {fileID: 0}
-    - target: {fileID: 4030536260916242, guid: 102474a904ff4a34a981876880a27c4f, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 56.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4030536260916242, guid: 102474a904ff4a34a981876880a27c4f, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 245.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4030536260916242, guid: 102474a904ff4a34a981876880a27c4f, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4030536260916242, guid: 102474a904ff4a34a981876880a27c4f, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4030536260916242, guid: 102474a904ff4a34a981876880a27c4f, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4030536260916242, guid: 102474a904ff4a34a981876880a27c4f, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4030536260916242, guid: 102474a904ff4a34a981876880a27c4f, type: 2}
-      propertyPath: m_RootOrder
-      value: 23
-      objectReference: {fileID: 0}
-    - target: {fileID: 1416292345113888, guid: 102474a904ff4a34a981876880a27c4f, type: 2}
-      propertyPath: m_Name
-      value: Flocker (6)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 102474a904ff4a34a981876880a27c4f, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1725219464
 GameObject:
   m_ObjectHideFlags: 0
@@ -3581,7 +3560,7 @@ GameObject:
   - component: {fileID: 1725219466}
   - component: {fileID: 1725219465}
   - component: {fileID: 1725219470}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (6)
   m_TagString: Impassable
   m_Icon: {fileID: 0}
@@ -3721,6 +3700,11 @@ Prefab:
       propertyPath: m_Name
       value: Pinky
       objectReference: {fileID: 0}
+    - target: {fileID: 114759895031708212, guid: f0bea70ca34b56342936279d665cfe7c,
+        type: 2}
+      propertyPath: followDist
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f0bea70ca34b56342936279d665cfe7c, type: 2}
   m_IsPrefabParent: 0
@@ -3737,7 +3721,7 @@ GameObject:
   - component: {fileID: 1749048789}
   - component: {fileID: 1749048788}
   - component: {fileID: 1749048793}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (8)
   m_TagString: Impassable
   m_Icon: {fileID: 0}
@@ -3847,7 +3831,7 @@ GameObject:
   - component: {fileID: 1769072005}
   - component: {fileID: 1769072004}
   - component: {fileID: 1769072009}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (25)
   m_TagString: Impassable
   m_Icon: {fileID: 0}
@@ -3957,7 +3941,7 @@ GameObject:
   - component: {fileID: 1782769764}
   - component: {fileID: 1782769763}
   - component: {fileID: 1782769768}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (10)
   m_TagString: Impassable
   m_Icon: {fileID: 0}
@@ -4162,7 +4146,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1962300854
 Prefab:
@@ -4251,6 +4235,30 @@ Prefab:
       propertyPath: m_TagString
       value: Impassable
       objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 2f8c5f4a336d61e4baeb0eaba1616bde, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 2f8c5f4a336d61e4baeb0eaba1616bde, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 2f8c5f4a336d61e4baeb0eaba1616bde, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 2f8c5f4a336d61e4baeb0eaba1616bde, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 2f8c5f4a336d61e4baeb0eaba1616bde, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 2f8c5f4a336d61e4baeb0eaba1616bde, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f8c5f4a336d61e4baeb0eaba1616bde, type: 3}
   m_IsPrefabParent: 0
@@ -4308,7 +4316,7 @@ GameObject:
   - component: {fileID: 2134701488}
   - component: {fileID: 2134701487}
   - component: {fileID: 2134701492}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (24)
   m_TagString: Impassable
   m_Icon: {fileID: 0}

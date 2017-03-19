@@ -112,7 +112,7 @@ MonoBehaviour:
   maxSpeed: 5
   maxForce: 0
   hasArrived: 0
-  followDist: 25
+  followDist: 50
 --- !u!136 &136000491565400408
 CapsuleCollider:
   m_ObjectHideFlags: 1

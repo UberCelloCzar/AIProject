@@ -19,8 +19,9 @@ public class Flocker : Vehicle
     private Vector3 sTotal; 
     private Vector3 steeringForce; // Force for steering
     private Vector3 separateForce; // Force for separation
+    public float avoidWeight;
 
-	override public void Start() // Call Inherited Start and then do our own and initialize the object
+    override public void Start() // Call Inherited Start and then do our own and initialize the object
     { 
 		base.Start(); // Call parent's start
         autoRotate = true; // Always face direction of travel
@@ -30,7 +31,7 @@ public class Flocker : Vehicle
         sTotal = Vector3.zero;
         leaderScript = GameObject.FindGameObjectWithTag("Pinky").GetComponent<Movement>(); // Access leader's script
         arrivalDistSq = Mathf.Pow(arrivalDist, 2f); // Square once and never again
-	}
+    }
 
     protected override void CalcSteeringForces() // Calculate the forces necessary to steer the Dalek to its desired destination (flocking algorithms, obstacle avoidance, etc.)
     {
@@ -77,7 +78,9 @@ public class Flocker : Vehicle
                 steeringForce += separateWeight * sTotal; // Apply to the steering force (I messed this up last time, I was applying directly to the acceleration)
             }
         }
-        
+
+        steeringForce += avoidWeight * AvoidObstacle();
+
         steeringForce = Vector3.ClampMagnitude(steeringForce, maxForce); // Limit the 1 steering force (ultimate force)
         ApplyForce(steeringForce); // Apply all forces to the acceleration as 1 force (ultimate force) in ApplyForce()
     }

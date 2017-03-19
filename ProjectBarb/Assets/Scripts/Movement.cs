@@ -28,8 +28,10 @@ public class Movement : MonoBehaviour {
     public float followDist; // Distance behind the leader the point is at
 
     GameObject tempPlayer;
+    aStar pinkyScript;
 
-	CharacterController charControl;
+
+    CharacterController charControl;
 
 	// Use this for initialization
 	void Start () {
@@ -41,13 +43,13 @@ public class Movement : MonoBehaviour {
 		path = new List<Vector3>();
 
 		hasArrived = true;
-	}
+        pinkyScript = this.GetComponent<aStar>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
 
 		//check for new path from AStar script
-		aStar pinkyScript = this.GetComponent<aStar>();
 		if(pinkyScript.path.Count > 0)
 		{
 			path.Clear();
