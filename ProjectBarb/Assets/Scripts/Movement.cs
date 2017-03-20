@@ -26,6 +26,7 @@ public class Movement : MonoBehaviour {
         get { return followPoint; }
     }
     public float followDist; // Distance behind the leader the point is at
+	public int arrivedDist = 10; //Distance the object must be before the method determines if they are close enough to the goal node
 
     GameObject tempPlayer;
     aStar pinkyScript;
@@ -99,16 +100,19 @@ public class Movement : MonoBehaviour {
 
 	void UpdateTarget(){
 		path.RemoveAt(0);
-		target = path[0];
-		Debug.Log("New target: X: " + target.x + " Y: " + target.y +  " | Z: " + target.z);
+		if(path.Count > 0)
+		{
+			target = path[0];
+			//Debug.Log("New target: X: " + target.x + " Y: " + target.y +  " | Z: " + target.z);
+		}
 	}
 
 	void Arrive(){
 		Vector3 tempPos = this.transform.position;
 		tempPos.y = 0;
-		if(Vector3.Distance(tempPos, target) < 10)
+		if(Vector3.Distance(tempPos, target) < arrivedDist)
 		{
-			Debug.Log("arriving at next node");
+			//Debug.Log("arriving at next node");
 			if(path.Count > 0)
 			{
 				UpdateTarget();

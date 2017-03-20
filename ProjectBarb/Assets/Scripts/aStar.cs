@@ -15,6 +15,9 @@ public class aStar : MonoBehaviour {
     private bool isReady;
 
     public List<Vector3> path;
+	public int distBetweenNodes = 10;
+	public int numNodes = 50;
+	public int heuristicScaleMultiplier = 2;
 
 	// Use this for initialization
 	void Start () {
@@ -33,9 +36,9 @@ public class aStar : MonoBehaviour {
             }
 
             //reset waypoint colors
-            for(int i = 0; i < 100; i++)
+			for(int i = 0; i < numNodes; i++)
             {
-                for(int j = 0; j < 100; j++)
+				for(int j = 0; j < numNodes; j++)
                 {
                     GameObject waypoint = nodeObjects[i, j];
                     waypoint.GetComponent<Renderer>().material.color = Color.white;
@@ -47,14 +50,14 @@ public class aStar : MonoBehaviour {
             pinky = GameObject.FindGameObjectWithTag("Pinky");
 
             int[] endNode = new int[2];
-            endNode[0] = (int)(player.transform.position.x / 5);
-            endNode[1] = (int)(player.transform.position.z / 5);
+			endNode[0] = (int)(player.transform.position.x / distBetweenNodes);
+			endNode[1] = (int)(player.transform.position.z / distBetweenNodes);
             //Debug.Log("player x: " + endNode[0]);
             //Debug.Log("player z: " + endNode[1]);
 
             int[] startNode = new int[2];
-            startNode[0] = (int)(pinky.transform.position.x / 5);
-            startNode[1] = (int)(pinky.transform.position.z / 5);
+			startNode[0] = (int)(pinky.transform.position.x / distBetweenNodes);
+			startNode[1] = (int)(pinky.transform.position.z / distBetweenNodes);
 
             RunAStar(startNode, endNode);
         }
@@ -83,7 +86,7 @@ public class aStar : MonoBehaviour {
                 // set h(n) equal to sum
                 Vector3 currentNode = new Vector3(nodeObjects[i, j].transform.position.x, 0, nodeObjects[i, j].transform.position.z);
                 Vector3 goalNode = new Vector3(nodeObjects[endNode[0], endNode[1]].transform.position.x, 0, nodeObjects[endNode[0], endNode[1]].transform.position.z);
-                nodes[i, j][2] = Vector3.Distance(currentNode, goalNode) * 50;
+				nodes[i, j][2] = Vector3.Distance(currentNode, goalNode) * heuristicScaleMultiplier;
                 //nodes[i, j][2] = Vector3.Distance(currentNode, goalNode);
                 //Debug.Log(nodes[i, j][2]);
 
@@ -126,13 +129,13 @@ public class aStar : MonoBehaviour {
             }
 
             checkNeighbor(searchNode, new int[2] {searchNode[0], searchNode[1] - 1}, nodes[searchNode[0], searchNode[1]][1], ref searchHeap); // If goal is not reached, check neighbors for best path (W)
-            //checkNeighbor(searchNode, new int[2] {searchNode[0] - 1, searchNode[1] - 1}, nodes[searchNode[0], searchNode[1]][1], ref searchHeap); // (NW)
+            checkNeighbor(searchNode, new int[2] {searchNode[0] - 1, searchNode[1] - 1}, nodes[searchNode[0], searchNode[1]][1], ref searchHeap); // (NW)
             checkNeighbor(searchNode, new int[2] {searchNode[0] - 1, searchNode[1]}, nodes[searchNode[0], searchNode[1]][1], ref searchHeap); // (N)
-            //checkNeighbor(searchNode, new int[2] {searchNode[0] - 1, searchNode[1] + 1}, nodes[searchNode[0], searchNode[1]][1], ref searchHeap); // (NE)
+            checkNeighbor(searchNode, new int[2] {searchNode[0] - 1, searchNode[1] + 1}, nodes[searchNode[0], searchNode[1]][1], ref searchHeap); // (NE)
             checkNeighbor(searchNode, new int[2] {searchNode[0], searchNode[1] + 1}, nodes[searchNode[0], searchNode[1]][1], ref searchHeap); // (E)
-            //checkNeighbor(searchNode, new int[2] {searchNode[0] + 1, searchNode[1] + 1}, nodes[searchNode[0], searchNode[1]][1], ref searchHeap); // (SE)
+            checkNeighbor(searchNode, new int[2] {searchNode[0] + 1, searchNode[1] + 1}, nodes[searchNode[0], searchNode[1]][1], ref searchHeap); // (SE)
             checkNeighbor(searchNode, new int[2] {searchNode[0] + 1, searchNode[1]}, nodes[searchNode[0], searchNode[1]][1], ref searchHeap); // (S)
-            //checkNeighbor(searchNode, new int[2] {searchNode[0] + 1, searchNode[1] - 1}, nodes[searchNode[0], searchNode[1]][1], ref searchHeap); // (SW)
+            checkNeighbor(searchNode, new int[2] {searchNode[0] + 1, searchNode[1] - 1}, nodes[searchNode[0], searchNode[1]][1], ref searchHeap); // (SW)
         }
         Debug.Log("Path not found!");
         return 1;
@@ -140,7 +143,7 @@ public class aStar : MonoBehaviour {
 
     public int checkNeighbor(int[] node, int[] neighbor, double nodeDist, ref Heap heap)
     {
-        if (neighbor[0] >= 90 || neighbor[0] < 0 || neighbor[1] >= 90 || neighbor[1] < 0) return 1; // Plz no index out of range
+		if (neighbor[0] >= numNodes || neighbor[0] < 0 || neighbor[1] >= numNodes || neighbor[1] < 0) return 1; // Plz no index out of range
 
         if (nodeObjects[neighbor[0], neighbor[1]].transform.position.y < 0)
             return 0;
@@ -166,7 +169,7 @@ public class aStar : MonoBehaviour {
         //Debug.Log("Node " + node[0] + ", " + node[1]);
 
         //add node to public path
-        Vector3 newNode = new Vector3((node[0])*5, 0, (node[1])*5);
+		Vector3 newNode = new Vector3((node[0])*distBetweenNodes, 0, (node[1])*distBetweenNodes);
         path.Add(newNode);
 
         //change the color of the game objects that sit in the path
