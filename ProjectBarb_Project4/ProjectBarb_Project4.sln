@@ -7,6 +7,8 @@ Project("{113BF586-5597-C858-8CBB-19AD7960474C}") = "ProjectBarb_Project4", "Ass
 EndProject
 Project("{113BF586-5597-C858-8CBB-19AD7960474C}") = "ProjectBarb_Project4", "Assembly-CSharp-Editor.csproj", "{D5424734-1EDE-600B-D1E9-803D7AF28E3E}"
 EndProject
+Project("{113BF586-5597-C858-8CBB-19AD7960474C}") = "ProjectBarb_Project4", "Assembly-UnityScript.unityproj", "{54652E18-1376-AD86-C534-E9E579873B01}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{D5424734-1EDE-600B-D1E9-803D7AF28E3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5424734-1EDE-600B-D1E9-803D7AF28E3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5424734-1EDE-600B-D1E9-803D7AF28E3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54652E18-1376-AD86-C534-E9E579873B01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54652E18-1376-AD86-C534-E9E579873B01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54652E18-1376-AD86-C534-E9E579873B01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54652E18-1376-AD86-C534-E9E579873B01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

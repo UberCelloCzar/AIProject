@@ -13,8 +13,18 @@ public class PopulateGraph : MonoBehaviour {
     //influnce map variables
     public bool[,] units;
     public GameObject black;
+	public GameObject yellow;
+	public GameObject blue;
+	public GameObject white;
 
     public int blackStrength = 4;
+	public int yellowStrength = 3;
+	public int blueStrength = 2;
+	public int whiteStrength = 1;
+
+	private string currentColor = "black";
+
+	private string currentTeam = "green";
 
 
     // Use this for initialization
@@ -35,6 +45,7 @@ public class PopulateGraph : MonoBehaviour {
                 //newPos.y = Terrain.activeTerrain.terrainData.GetInterpolatedHeight(newPos.x, newPos.z);
                 newPos.y = Terrain.activeTerrain.SampleHeight(newPos);
                 GameObject newVertex = (GameObject)Instantiate(vertex, newPos, this.gameObject.transform.rotation);
+				newVertex.GetComponent<Renderer>().material.color = Color.gray;
                 //newVertex.GetComponent<MeshRenderer>().enabled = false;
 
                 //store waypoints in 2d array
@@ -63,6 +74,41 @@ public class PopulateGraph : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+		if (Input.GetKeyDown(KeyCode.R))
+		{
+			currentTeam = "red";
+		}
+		if (Input.GetKeyDown(KeyCode.G))
+		{
+			currentTeam = "green";
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha1))
+		{
+			currentColor = "white";
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha2))
+		{
+			currentColor = "blue";
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha3))
+		{
+			currentColor = "yellow";
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha4))
+		{
+			currentColor = "black";
+		}
+		//update current color in UI
+		string text = GameObject.FindGameObjectWithTag("Canvas").GetComponentInChildren<UnityEngine.UI.Text>().text;
+		int index = text.LastIndexOf("Current Color");
+		if (index > 0)
+			text = text.Substring(0, index);
+		text += "Current Color: " + currentColor;
+		text += "\nCurrent Team: " + currentTeam;
+		GameObject.FindGameObjectWithTag("Canvas").GetComponentInChildren<UnityEngine.UI.Text>().text = text;
+
+
+		/*
         if (Input.GetKeyDown(KeyCode.G))
         {
             //reset waypoint colors
@@ -77,6 +123,7 @@ public class PopulateGraph : MonoBehaviour {
             waypointRender = !waypointRender;
 
         }
+        */
 
 
         //spawn a unit when mouse is clicked
@@ -89,31 +136,102 @@ public class PopulateGraph : MonoBehaviour {
             int x = (int)(cameraPos.x / distBetweenNodes);
             int z = (int)(cameraPos.z / distBetweenNodes);
 
-            if (units[x, z]) //already exists a unit here
+            if (x < 0 || x >= numNodes || z < 0 || z >= numNodes || units[x, z]) //already exists a unit here
             {
                 //don't add a new one
             }
             else
             {
-                units[x, z] = true;
+				if(adjMat[x,z].tag == "Invalid")
+				{
+					//no
+				}
+				else
+				{
+					units[x, z] = true;
 
-                newPos = adjMat[x, z].transform.position;
-                GameObject newObject = (GameObject)Instantiate(black, newPos, this.gameObject.transform.rotation);
+					newPos = adjMat[x, z].transform.position;
 
-                //update influence map
-                ColorGrid(x, z, blackStrength);
+					//update influence map
+					GameObject newObject;
+					int strength = 0;
+					switch(currentColor) {
+					case "white":
+						strength = whiteStrength;
+						newObject = (GameObject)Instantiate(white, newPos, this.gameObject.transform.rotation);
+						break;
+					case "blue":
+						strength = blueStrength;
+						newObject = (GameObject)Instantiate(blue, newPos, this.gameObject.transform.rotation);
+						break;
+					case "yellow":
+						strength = yellowStrength;
+						newObject = (GameObject)Instantiate(yellow, newPos, this.gameObject.transform.rotation);
+						break;
+					case "black":
+						strength = blackStrength;
+						newObject = (GameObject)Instantiate(black, newPos, this.gameObject.transform.rotation);
+						break;
+					default:
+						newObject = (GameObject)Instantiate(black, newPos, this.gameObject.transform.rotation);
+						strength = blackStrength;
+						break;
+					}
+					ColorGrid(x, z, strength - 1);
+				}
             }
         }
     }
-    void ColorGrid(int startX, int startY, int strength)
+    void ColorGrid(int startX, int startY, int strengthMax)
     {
-        for (int i = startX - strength; i < startX + strength; i++)
+		int strength = 1;
+		for (int i = startX - strengthMax; i <= startX + strengthMax; i++)
         {
-            for (int j = startY - strength; j < startY + strength; j++)
+			for (int j = startY - strengthMax; j <= startY + strengthMax; j++)
             {
-                GameObject waypoint = adjMat[i, j];
-                waypoint.GetComponent<Renderer>().material.color = Color.green;
+				if(i < 0 || j < 0 || i >= numNodes || j >= numNodes)
+				{
+					//no
+				}
+				else
+				{
+					GameObject waypoint = adjMat[i, j];
+
+					if(adjMat[i, j].tag != "Invalid")
+					{
+						int offset = Mathf.Max(Mathf.Abs(startX - i), Mathf.Abs(startY - j));
+						offset = strengthMax - offset + 1;
+
+						string winner = "";
+						if(currentTeam == "red")
+						{
+							adjMat[i,j].GetComponent<Influence>().redInfluence += offset;
+						}
+						if(currentTeam == "green")
+						{
+							adjMat[i,j].GetComponent<Influence>().greenInfluence += offset;
+						}
+
+						if(adjMat[i,j].GetComponent<Influence>().redInfluence > adjMat[i,j].GetComponent<Influence>().greenInfluence)
+						{
+							waypoint.GetComponent<Renderer>().material.color = Color.red;
+						}
+						else if(adjMat[i,j].GetComponent<Influence>().redInfluence < adjMat[i,j].GetComponent<Influence>().greenInfluence)
+						{
+							waypoint.GetComponent<Renderer>().material.color = Color.green;
+						}
+						else
+						{
+							waypoint.GetComponent<Renderer>().material.color = Color.gray;
+						}
+
+						adjMat[i,j].GetComponent<Influence>().influence = Mathf.Abs(adjMat[i,j].GetComponent<Influence>().greenInfluence - adjMat[i,j].GetComponent<Influence>().redInfluence);
+
+						adjMat[i,j].GetComponentInChildren<TextMesh>().text = adjMat[i,j].GetComponent<Influence>().influence.ToString();
+					}
+				}
             }
         }
     }
 }
+

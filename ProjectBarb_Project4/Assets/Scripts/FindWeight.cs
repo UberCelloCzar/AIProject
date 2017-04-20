@@ -36,6 +36,12 @@ public class FindWeight : MonoBehaviour {
 			newPos.y = -1;
 
 			this.gameObject.transform.position = newPos;
+
+			//remove text
+			this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+
+			//add invalid tag
+			this.gameObject.tag = "Invalid";
 		}
 	}
 }
