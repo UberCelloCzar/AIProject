@@ -26,6 +26,9 @@ public class PopulateGraph : MonoBehaviour {
 
 	private string currentTeam = "green";
 
+    GameObject activeVertex;
+
+    public int standardVertexHeight = 50;
 
     // Use this for initialization
     void Start()
@@ -69,12 +72,18 @@ public class PopulateGraph : MonoBehaviour {
                 units[i, j] = false;
             }
         }
+
+        activeVertex = adjMat[0, 0];
     }
 
     // Update is called once per frame
     void Update()
     {
-		if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            toggleGrid();
+        }
+        if (Input.GetKeyDown(KeyCode.R))
 		{
 			currentTeam = "red";
 		}
@@ -108,77 +117,67 @@ public class PopulateGraph : MonoBehaviour {
 		GameObject.FindGameObjectWithTag("Canvas").GetComponentInChildren<UnityEngine.UI.Text>().text = text;
 
 
-		/*
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            //reset waypoint colors
-            for (int i = 0; i < numNodes; i++)
-            {
-                for (int j = 0; j < numNodes; j++)
-                {
-                    GameObject waypoint = adjMat[i, j];
-                    waypoint.GetComponent<MeshRenderer>().enabled = !waypointRender;
-                }
-            }
-            waypointRender = !waypointRender;
+        //get camera pos
+        Vector3 newPos = new Vector3();
+        Vector3 cameraPos = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>().position;
 
-        }
-        */
+        Vector3 pos = Input.mousePosition;
+        pos.z = Mathf.Abs(cameraPos.y - standardVertexHeight);
+        pos = Camera.main.ScreenToWorldPoint(pos);
 
+        int x = (int)(pos.x / distBetweenNodes);
+        int z = (int)(pos.z / distBetweenNodes);
 
-        //spawn a unit when mouse is clicked
-        if (Input.GetMouseButtonDown(0))
-        {
-            Vector3 newPos = new Vector3();
-            Vector3 cameraPos = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>().position;
-
-            //add unit to units matrix
-            int x = (int)(cameraPos.x / distBetweenNodes);
-            int z = (int)(cameraPos.z / distBetweenNodes);
-
-            if (x < 0 || x >= numNodes || z < 0 || z >= numNodes || units[x, z]) //already exists a unit here
+            if (x < 0 || x >= numNodes || z < 0 || z >= numNodes) //already exists a unit here
             {
                 //don't add a new one
             }
             else
             {
-				if(adjMat[x,z].tag == "Invalid")
-				{
-					//no
-				}
-				else
-				{
-					units[x, z] = true;
+            if (adjMat[x, z].tag == "Invalid")
+            {
+                //no
+            }
+            else
+            {
+                activeVertex.transform.localScale = new Vector3(7, 1, 7);
+                activeVertex = adjMat[x, z];
+                activeVertex.transform.localScale = new Vector3(12, 1, 12);
 
-					newPos = adjMat[x, z].transform.position;
+                if (Input.GetMouseButtonDown(0) && !units[x,z])
+                {
+                    units[x, z] = true;
 
-					//update influence map
-					GameObject newObject;
-					int strength = 0;
-					switch(currentColor) {
-					case "white":
-						strength = whiteStrength;
-						newObject = (GameObject)Instantiate(white, newPos, this.gameObject.transform.rotation);
-						break;
-					case "blue":
-						strength = blueStrength;
-						newObject = (GameObject)Instantiate(blue, newPos, this.gameObject.transform.rotation);
-						break;
-					case "yellow":
-						strength = yellowStrength;
-						newObject = (GameObject)Instantiate(yellow, newPos, this.gameObject.transform.rotation);
-						break;
-					case "black":
-						strength = blackStrength;
-						newObject = (GameObject)Instantiate(black, newPos, this.gameObject.transform.rotation);
-						break;
-					default:
-						newObject = (GameObject)Instantiate(black, newPos, this.gameObject.transform.rotation);
-						strength = blackStrength;
-						break;
-					}
-					ColorGrid(x, z, strength - 1);
-				}
+                    newPos = adjMat[x, z].transform.position;
+
+                    //update influence map
+                    GameObject newObject;
+                    int strength = 0;
+                    switch (currentColor)
+                    {
+                        case "white":
+                            strength = whiteStrength;
+                            newObject = (GameObject)Instantiate(white, newPos, this.gameObject.transform.rotation);
+                            break;
+                        case "blue":
+                            strength = blueStrength;
+                            newObject = (GameObject)Instantiate(blue, newPos, this.gameObject.transform.rotation);
+                            break;
+                        case "yellow":
+                            strength = yellowStrength;
+                            newObject = (GameObject)Instantiate(yellow, newPos, this.gameObject.transform.rotation);
+                            break;
+                        case "black":
+                            strength = blackStrength;
+                            newObject = (GameObject)Instantiate(black, newPos, this.gameObject.transform.rotation);
+                            break;
+                        default:
+                            newObject = (GameObject)Instantiate(black, newPos, this.gameObject.transform.rotation);
+                            strength = blackStrength;
+                            break;
+                    }
+                    ColorGrid(x, z, strength - 1);
+                }
             }
         }
     }
@@ -232,6 +231,28 @@ public class PopulateGraph : MonoBehaviour {
 				}
             }
         }
+    }
+
+    void toggleGrid()
+    {
+        //reset waypoint colors
+        for (int i = 0; i < numNodes; i++)
+        {
+            for (int j = 0; j < numNodes; j++)
+            {
+                GameObject waypoint = adjMat[i, j];
+                waypoint.GetComponent<MeshRenderer>().enabled = !waypointRender;
+            }
+        }
+
+        GameObject[] ivalues = GameObject.FindGameObjectsWithTag("iValue");
+        for(int i = 0; i < ivalues.Length; i++)
+        {
+            ivalues[i].GetComponent<MeshRenderer>().enabled = !waypointRender;
+        }
+
+
+        waypointRender = !waypointRender;
     }
 }
 

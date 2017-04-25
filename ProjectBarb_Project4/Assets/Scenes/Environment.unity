@@ -1144,6 +1144,7 @@ MonoBehaviour:
   yellowStrength: 3
   blueStrength: 2
   whiteStrength: 1
+  standardVertexHeight: 50
 --- !u!4 &617527478
 Transform:
   m_ObjectHideFlags: 0
@@ -2365,7 +2366,7 @@ Prefab:
     - target: {fileID: 224067298774920438, guid: ee4e1bce7f09b8940bceaa6db88c96b7,
         type: 2}
       propertyPath: m_LocalPosition.z
-      value: 79.82
+      value: -204
       objectReference: {fileID: 0}
     - target: {fileID: 224067298774920438, guid: ee4e1bce7f09b8940bceaa6db88c96b7,
         type: 2}
@@ -2695,9 +2696,9 @@ RectTransform:
   m_Father: {fileID: 2021940899}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -316, y: -195}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 175, y: -175}
   m_SizeDelta: {x: 350, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1647756479
@@ -2721,9 +2722,9 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
+    m_FontSize: 24
     m_FontStyle: 1
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 0
@@ -2734,9 +2735,17 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Controls:
 
+    Move Camera: WASD
+
     Change Team: ''g'' or ''r''
 
     Change Unit: 1-4
+
+    Toggle iMap: ''space''
+
+    Zoom In: ''x''
+
+    Zoom Out: ''z''
 
 
     Current Color: black

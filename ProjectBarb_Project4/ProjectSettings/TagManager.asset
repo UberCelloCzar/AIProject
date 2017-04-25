@@ -16,6 +16,7 @@ TagManager:
   - White
   - Invalid
   - Canvas
+  - iValue
   layers:
   - Default
   - TransparentFX
